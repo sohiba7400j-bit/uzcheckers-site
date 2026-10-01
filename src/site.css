@@ -22,6 +22,7 @@
 .hint { color: #989795; font-size: 13px; margin: 0; }
 .link { background: none; border: 0; color: #81b64c; cursor: pointer; font-size: 15px; box-shadow: none; }
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #fff; color: #222; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+.lang { padding: 10px; border-radius: 8px; background: #302e2b; color: #fff; border: 1px solid #454340; font-size: 15px; cursor: pointer; margin-bottom: 6px; }
 @media (max-width: 800px) {
   .site { flex-direction: column; }
   .side { width: auto; height: auto; position: static; flex-direction: row; flex-wrap: wrap; align-items: center; }
