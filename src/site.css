@@ -1,0 +1,30 @@
+.site { display: flex; min-height: 100vh; }
+.side { width: 220px; background: #211f1c; padding: 16px 12px; display: flex; flex-direction: column; gap: 6px; position: sticky; top: 0; height: 100vh; box-sizing: border-box; }
+.logo { font-size: 22px; font-weight: 800; color: #fff; cursor: pointer; padding: 8px 10px 16px; }
+.nav { display: flex; gap: 12px; align-items: center; background: none; color: #c3c2c1; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 600; text-align: left; box-shadow: none; }
+.nav:hover, .nav.on { background: #2f2d2a; color: #fff; }
+.grow { flex: 1; }
+.me { padding: 10px; font-weight: 700; }
+.btn { padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: 15px; border: 0; cursor: pointer; color: #fff; }
+.btn.green { background: #81b64c; box-shadow: 0 4px 0 #45753c; }
+.btn.gray { background: #454340; box-shadow: 0 4px 0 #333; }
+.btn.big { font-size: 20px; padding: 18px 24px; width: 100%; }
+.main { flex: 1; min-width: 0; }
+.hero { display: flex; gap: 48px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 40px 24px; }
+.mini { width: min(90vw, 460px); }
+.mini .cell { cursor: default; }
+.heroText { max-width: 360px; display: flex; flex-direction: column; gap: 14px; text-align: center; }
+.heroText h1 { font-size: 40px; line-height: 1.1; margin: 0; }
+.heroText p { color: #c3c2c1; margin: 0; }
+.card { max-width: 340px; margin: 60px auto; background: #211f1c; padding: 24px; border-radius: 12px; display: flex; flex-direction: column; gap: 12px; }
+.card h2 { margin: 0; text-align: center; }
+.card input { padding: 12px; border-radius: 8px; border: 1px solid #454340; background: #302e2b; color: #fff; font-size: 16px; }
+.hint { color: #989795; font-size: 13px; margin: 0; }
+.link { background: none; border: 0; color: #81b64c; cursor: pointer; font-size: 15px; box-shadow: none; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #fff; color: #222; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+@media (max-width: 800px) {
+  .site { flex-direction: column; }
+  .side { width: auto; height: auto; position: static; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .grow { display: none; }
+  .nav span { display: none; }
+}
