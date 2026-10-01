@@ -85,7 +85,7 @@ export default function Site() {
             <MiniBoard />
             <div className="heroText">
               <h1>Shashkani onlayn o'ynang!</h1>
-              <p>Ruscha shashka, bepul va qulay.</p>
+              <p>Ruscha shashka, bepul va qulay!</p>
               <button className="btn green big" onClick={() => setView('play')}>▶ O'ynash</button>
               <button className="btn gray big" onClick={() => setView('bot')}>🤖 Kompyuter bilan</button>
             </div>
