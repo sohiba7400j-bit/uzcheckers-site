@@ -1,0 +1,16 @@
+.learn { display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap; padding: 16px; }
+.learn-board { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.learn-status { margin: 0; font-weight: 700; }
+.coach { width: min(92vw, 360px); background: #211f1c; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.coach h2 { margin: 0; }
+.coach-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.coach-btns button { padding: 8px 12px; font-size: 14px; }
+.coach-btns button.gray { background: #454340; }
+.coach-log { display: flex; flex-direction: column; gap: 8px; max-height: 340px; overflow-y: auto; }
+.coach-msg { background: #302e2b; border-radius: 8px; padding: 10px 12px; font-size: 14px; line-height: 1.4; }
+.coach-msg.good { border-left: 4px solid #81b64c; }
+.coach-msg.warn { border-left: 4px solid #e0605a; }
+.coach-msg.tip { border-left: 4px solid #f5c542; }
+.coach-rules { margin: 6px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.5; }
+.cell.hint { outline: 4px solid #f5c542; outline-offset: -4px; }
+.cell.hint2 { outline: 4px solid #f5c542; outline-offset: -4px; background-image: radial-gradient(rgba(245, 197, 66, 0.4), transparent 70%); }

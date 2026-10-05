@@ -2,15 +2,17 @@ import { useState } from 'react'
 import { Game } from './App'
 import { LANGS, setLang, useLang } from './i18n'
 import type { Keys, Lang } from './i18n'
+import { Puzzles } from './Puzzles'
+import { Learn } from './Learn'
 import './site.css'
 
-type View = 'home' | 'play' | 'bot' | 'auth'
+type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'auth'
 
 const NAV: [string, Keys, string][] = [
   ['♟', 'play', 'play'],
   ['🤖', 'vsBot', 'bot'],
-  ['🧩', 'puzzles', 'soon'],
-  ['📚', 'learn', 'soon'],
+  ['🧩', 'puzzles', 'puzzles'],
+  ['📚', 'learn', 'learn'],
   ['👥', 'friends', 'soon'],
 ]
 
@@ -107,6 +109,8 @@ export default function Site() {
 
         {view === 'play' && <Game key="play" />}
         {view === 'bot' && <Game key="bot" vsBot />}
+        {view === 'puzzles' && <Puzzles />}
+        {view === 'learn' && <Learn />}
 
         {view === 'auth' && (
           <div className="card">

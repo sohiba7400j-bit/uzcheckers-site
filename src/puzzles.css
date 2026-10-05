@@ -1,0 +1,11 @@
+.pz-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 560px; }
+.pz-list button { padding: 8px 12px; background: #454340; font-size: 14px; }
+.pz-list button.on { background: #81b64c; }
+.pz-list button.done::after { content: ' ✓'; }
+.pz-goal { color: #c3c2c1; margin: 0; text-align: center; }
+.pz-msg { min-height: 24px; font-weight: 700; margin: 0; }
+.pz-msg.ok { color: #81b64c; }
+.pz-msg.bad { color: #e0605a; }
+.pz-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.pz-actions button.gray { background: #454340; }
+.cell.hint { outline: 4px solid #f5c542; outline-offset: -4px; }
