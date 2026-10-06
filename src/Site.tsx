@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Game } from './App'
 import { LANGS, setLang, useLang } from './i18n'
 import type { Keys, Lang } from './i18n'
-import { Puzzles } from './Puzzles'
 import { Learn } from './Learn'
+import { Puzzles } from './Puzzles'
+import { Settings, settingsTitle } from './Settings'
 import './site.css'
 
-type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'auth'
+type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'settings' | 'auth'
 
 const NAV: [string, Keys, string][] = [
   ['♟', 'play', 'play'],
@@ -70,6 +71,12 @@ export default function Site() {
             <span>{icon}</span>{t(label)}
           </button>
         ))}
+        <button
+          className={`nav ${view === 'settings' ? 'on' : ''}`}
+          onClick={() => setView('settings')}
+        >
+          <span>⚙️</span>{settingsTitle(lang)}
+        </button>
         <div className="grow" />
         <select
           className="lang"
@@ -111,6 +118,7 @@ export default function Site() {
         {view === 'bot' && <Game key="bot" vsBot />}
         {view === 'puzzles' && <Puzzles />}
         {view === 'learn' && <Learn />}
+        {view === 'settings' && <Settings />}
 
         {view === 'auth' && (
           <div className="card">

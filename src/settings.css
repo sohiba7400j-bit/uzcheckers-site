@@ -1,0 +1,15 @@
+.settings { display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; padding: 24px 16px; }
+.settings-panel { width: min(92vw, 380px); background: #211f1c; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.settings-panel h2, .settings-panel h3, .settings-preview h3 { margin: 0; }
+.settings-panel h3 { color: #c3c2c1; font-size: 16px; }
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+.swatch { width: 44px; height: 44px; border-radius: 8px; border: 3px solid transparent; padding: 0; cursor: pointer; }
+.swatch.round { border-radius: 50%; }
+.swatch.on { border-color: #81b64c; }
+.pair { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pair input[type='color'] { width: 56px; height: 36px; border: 0; background: none; padding: 0; cursor: pointer; }
+.reset { background: #454340; }
+.settings-preview { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.board.prev { width: min(92vw, 280px); }
+.board.prev .cell { cursor: default; }
+.board.prev .piece { font-size: 14px; }
