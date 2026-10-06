@@ -1,0 +1,15 @@
+.ng { width: min(92vw, 380px); background: #211f1c; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.ng h2 { margin: 0; text-align: center; }
+.ng-current { background: #302e2b; border-radius: 10px; padding: 14px; font-size: 20px; font-weight: 700; text-align: center; }
+.ng-cat { font-weight: 700; margin-bottom: 8px; }
+.ng-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ng-btn { background: #3a3835; border: 2px solid transparent; padding: 12px 6px; font-size: 15px; font-weight: 600; }
+.ng-btn.on { border-color: #81b64c; }
+.ng-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.ng-btn.wide { width: 100%; }
+.ng-note { color: #989795; font-size: 13px; margin: 0; text-align: center; }
+.ng-start { padding: 16px; font-size: 20px; font-weight: 800; box-shadow: 0 4px 0 #45753c; }
+.clock { min-width: 120px; text-align: center; font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; padding: 6px 16px; border-radius: 8px; background: #302e2b; color: #9a9896; }
+.clock.on { background: #f0f0f0; color: #222; }
+.clock.low { color: #e0605a; }
+.clock.on.low { color: #c0392b; }
