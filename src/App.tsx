@@ -4,6 +4,8 @@ import './newgame.css'
 import type { Color, State } from './board'
 import { init, key } from './board'
 import { botMove } from './bot'
+import { addGame } from './games'
+import type { Step } from './games'
 import { useLang } from './i18n'
 import { NewGame } from './NewGame'
 import { apply, hasMoves, legal } from './rules'
@@ -25,6 +27,8 @@ function Match({ vsBot, tc, onNew }: { vsBot: boolean; tc: TC | null; onNew: () 
   const [moves, setMoves] = useState(0)
   const [flag, setFlag] = useState<Color | null>(null)
   const lastTick = useRef(Date.now())
+  const stepsRef = useRef<Step[]>([])
+  const saved = useRef(false)
 
   const active = s.chain ?? sel
   const targets = active ? legal(s, active[0], active[1]) : []
@@ -53,24 +57,43 @@ function Match({ vsBot, tc, onNew }: { vsBot: boolean; tc: TC | null; onNew: () 
     if (tc && !flag && (clock.w <= 0 || clock.b <= 0)) setFlag(clock.w <= 0 ? 'w' : 'b')
   }, [clock, tc, flag])
 
+  // Kompyuter yurishi. Soat har 0.1 soniyada yangilanadi, shuning uchun bu effekt faqat holat o'zgarganda ishlaydi.
   useEffect(() => {
     if (!vsBot || winner || s.turn !== 'b') return
     const timer = setTimeout(() => {
       const b = botMove(s)
       if (b) {
         const n = apply(s, b.from, b.m)
+        stepsRef.current.push([b.from[0], b.from[1], b.m.r, b.m.c])
         setS(n)
         if (n.turn !== s.turn) turnDone('b')
       }
     }, 500)
     return () => clearTimeout(timer)
-  })
+  }, [s, vsBot, winner])
+
+  // O'yin tugaganda tarixga saqlash
+  useEffect(() => {
+    if (!winner || saved.current) return
+    saved.current = true
+    addGame({
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      at: Date.now(),
+      mode: vsBot ? 'bot' : 'local',
+      tc,
+      winner,
+      reason: flag ? 'time' : 'end',
+      turns: moves,
+      steps: [...stepsRef.current],
+    })
+  }, [winner, flag, vsBot, tc, moves])
 
   function click(r: number, c: number) {
     if (winner || (vsBot && s.turn === 'b')) return
     const m = targets.find(x => x.r === r && x.c === c)
     if (m && active) {
       const n = apply(s, active, m)
+      stepsRef.current.push([active[0], active[1], r, c])
       setS(n)
       setSel(null)
       if (n.turn !== s.turn) turnDone(s.turn)

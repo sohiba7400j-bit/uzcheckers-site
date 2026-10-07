@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Game } from './App'
+import { GameHistory, historyTitle } from './GameHistory'
 import { LANGS, setLang, useLang } from './i18n'
 import type { Keys, Lang } from './i18n'
 import { Learn } from './Learn'
@@ -7,7 +8,7 @@ import { Puzzles } from './Puzzles'
 import { Settings, settingsTitle } from './Settings'
 import './site.css'
 
-type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'settings' | 'auth'
+type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'history' | 'settings' | 'auth'
 
 const NAV: [string, Keys, string][] = [
   ['♟', 'play', 'play'],
@@ -72,6 +73,12 @@ export default function Site() {
           </button>
         ))}
         <button
+          className={`nav ${view === 'history' ? 'on' : ''}`}
+          onClick={() => setView('history')}
+        >
+          <span>🕘</span>{historyTitle(lang)}
+        </button>
+        <button
           className={`nav ${view === 'settings' ? 'on' : ''}`}
           onClick={() => setView('settings')}
         >
@@ -118,6 +125,7 @@ export default function Site() {
         {view === 'bot' && <Game key="bot" vsBot />}
         {view === 'puzzles' && <Puzzles />}
         {view === 'learn' && <Learn />}
+        {view === 'history' && <GameHistory />}
         {view === 'settings' && <Settings />}
 
         {view === 'auth' && (
