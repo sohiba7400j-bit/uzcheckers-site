@@ -12,6 +12,7 @@ import {
   useAuth,
 } from './auth'
 import { useLang } from './i18n'
+import { FacebookIcon, GoogleIcon, GuestIcon } from './icons'
 
 const TEXT = {
   en: {
@@ -31,6 +32,7 @@ const TEXT = {
     home: 'Go to home',
     loading: 'Loading…',
     guestName: 'Guest',
+    later: 'Maybe later',
   },
   uz: {
     title: 'Kirish',
@@ -49,6 +51,7 @@ const TEXT = {
     home: 'Bosh sahifaga',
     loading: 'Yuklanmoqda…',
     guestName: 'Mehmon',
+    later: 'Keyinroq',
   },
   ru: {
     title: 'Вход',
@@ -67,6 +70,7 @@ const TEXT = {
     home: 'На главную',
     loading: 'Загрузка…',
     guestName: 'Гость',
+    later: 'Позже',
   },
 }
 
@@ -75,7 +79,7 @@ export const authText = (lang: string) =>
 
 type TgUser = Record<string, unknown>
 
-// Telegram'ning rasmiy kirish tugmasi (Login Widget)
+// Telegram'ning rasmiy kirish tugmasi (logotipi tugmaning o'zida bor)
 function TelegramButton({ bot, onAuth }: { bot: string; onAuth: (u: TgUser) => void }) {
   const box = useRef<HTMLDivElement>(null)
   const cb = useRef(onAuth)
@@ -157,11 +161,13 @@ export function AuthPage({ onDone }: { onDone: () => void }) {
         {anyProvider && <p>{L.linkTitle}</p>}
         {PROVIDERS_ON.google && (
           <button className="auth-btn google" disabled={busy} onClick={() => run(() => linkOAuth('google'))}>
+            <GoogleIcon />
             {L.linkGoogle}
           </button>
         )}
         {PROVIDERS_ON.facebook && (
           <button className="auth-btn facebook" disabled={busy} onClick={() => run(() => linkOAuth('facebook'))}>
+            <FacebookIcon />
             {L.linkFacebook}
           </button>
         )}
@@ -178,11 +184,13 @@ export function AuthPage({ onDone }: { onDone: () => void }) {
       <p>{L.sub}</p>
       {PROVIDERS_ON.google && (
         <button className="auth-btn google" disabled={busy} onClick={() => run(() => signInOAuth('google'))}>
+          <GoogleIcon />
           {L.google}
         </button>
       )}
       {PROVIDERS_ON.facebook && (
         <button className="auth-btn facebook" disabled={busy} onClick={() => run(() => signInOAuth('facebook'))}>
+          <FacebookIcon />
           {L.facebook}
         </button>
       )}
@@ -195,6 +203,7 @@ export function AuthPage({ onDone }: { onDone: () => void }) {
         />
       )}
       <button className="auth-btn guest" disabled={busy} onClick={() => run(signInGuest, onDone)}>
+        <GuestIcon />
         {L.guest}
       </button>
       <p>{L.guestNote}</p>
