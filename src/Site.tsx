@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Game } from './App'
 import { avatarOf, displayName, signOut, useAuth } from './auth'
 import { AuthPage, authText } from './AuthPage'
+import { Friends } from './Friends'
 import { GameHistory, historyTitle } from './GameHistory'
 import { LANGS, setLang, useLang } from './i18n'
 import type { Keys, Lang } from './i18n'
@@ -11,14 +12,23 @@ import { Puzzles } from './Puzzles'
 import { Settings, settingsTitle } from './Settings'
 import './site.css'
 
-type View = 'home' | 'play' | 'bot' | 'puzzles' | 'learn' | 'history' | 'settings' | 'auth'
+type View =
+  | 'home'
+  | 'play'
+  | 'bot'
+  | 'puzzles'
+  | 'learn'
+  | 'friends'
+  | 'history'
+  | 'settings'
+  | 'auth'
 
-const NAV: [string, Keys, string][] = [
+const NAV: [string, Keys, View][] = [
   ['♟', 'play', 'play'],
   ['🤖', 'vsBot', 'bot'],
   ['🧩', 'puzzles', 'puzzles'],
   ['📚', 'learn', 'learn'],
-  ['👥', 'friends', 'soon'],
+  ['👥', 'friends', 'friends'],
 ]
 
 const TABS: [string, Keys, View][] = [
@@ -71,7 +81,8 @@ export default function Site() {
 
   // Sayt ochilganda kirish oynasi. "Keyinroq" bosilsa, shu seansda qayta chiqmaydi.
   const showGate = configured && !loading && !user && !gateClosed && view !== 'auth'
-  const moreOn = view === 'history' || view === 'settings' || view === 'auth'
+  const moreOn =
+    view === 'friends' || view === 'history' || view === 'settings' || view === 'auth'
 
   function closeGate() {
     try {
@@ -80,11 +91,6 @@ export default function Site() {
       // ignore
     }
     setGateClosed(true)
-  }
-
-  function say(msg: string) {
-    setToast(msg)
-    setTimeout(() => setToast(''), 2000)
   }
 
   function go(v: View) {
@@ -130,7 +136,7 @@ export default function Site() {
           <button
             key={label}
             className={`nav ${view === to ? 'on' : ''}`}
-            onClick={() => (to === 'soon' ? say(t('soon')) : go(to as View))}
+            onClick={() => go(to)}
           >
             <span>{icon}</span>{t(label)}
           </button>
@@ -176,6 +182,7 @@ export default function Site() {
         {view === 'bot' && <Game key="bot" vsBot />}
         {view === 'puzzles' && <Puzzles />}
         {view === 'learn' && <Learn />}
+        {view === 'friends' && <Friends onSignIn={() => go('auth')} />}
         {view === 'history' && <GameHistory />}
         {view === 'settings' && <Settings />}
         {view === 'auth' && <AuthPage onDone={() => go('home')} />}
@@ -198,17 +205,11 @@ export default function Site() {
         <>
           <div className="sheet-bg" onClick={() => setSheet(false)} />
           <div className="sheet">
+            <button className="nav" onClick={() => go('friends')}>
+              <span>👥</span>{t('friends')}
+            </button>
             <button className="nav" onClick={() => go('history')}>
               <span>🕘</span>{historyTitle(lang)}
-            </button>
-            <button
-              className="nav"
-              onClick={() => {
-                setSheet(false)
-                say(t('soon'))
-              }}
-            >
-              <span>👥</span>{t('friends')}
             </button>
             <button className="nav" onClick={() => go('settings')}>
               <span>⚙️</span>{settingsTitle(lang)}

@@ -1,0 +1,17 @@
+.fr { max-width: 640px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 16px; }
+.fr h1 { margin: 0; }
+.fr h2 { margin: 0; font-size: 18px; }
+.fr-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.fr-card { background: #211f1c; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.fr-row { display: flex; align-items: center; gap: 10px; background: #302e2b; border-radius: 10px; padding: 8px 12px; flex-wrap: wrap; }
+.fr-name { flex: 1; min-width: 80px; font-weight: 700; word-break: break-word; }
+.fr-label { color: #989795; font-size: 14px; }
+.fr-hint { color: #989795; font-size: 14px; margin: 0; }
+.fr-msg { color: #e0605a; margin: 0; font-size: 14px; word-break: break-word; }
+.fr-av { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; display: inline-flex; align-items: center; justify-content: center; background: #454340; color: #ffffff; font-weight: 700; flex: none; }
+.fr-search { display: flex; gap: 8px; }
+.fr-card input { flex: 1; min-width: 0; padding: 12px; border-radius: 8px; border: 1px solid #454340; background: #302e2b; color: #ffffff; font-size: 16px; }
+.fr-btn { padding: 8px 14px; font-size: 14px; }
+.fr-btn.gray { background: #454340; }
+.fr-btn.red { background: #b5483f; }
+.fr-btn:disabled { opacity: 0.5; cursor: not-allowed; }
