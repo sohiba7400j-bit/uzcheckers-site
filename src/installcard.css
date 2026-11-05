@@ -1,0 +1,5 @@
+.ic { display: flex; flex-direction: column; gap: 8px; background: #211f1c; border-radius: 12px; padding: 14px; }
+.ic b { font-size: 15px; }
+.ic-btn { display: block; text-align: center; background: #81b64c; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px; border-radius: 8px; border: 0; font-size: 15px; cursor: pointer; }
+.ic-btn.gray { background: #454340; }
+.ic-note { margin: 0; color: #c3c2c1; font-size: 13px; }

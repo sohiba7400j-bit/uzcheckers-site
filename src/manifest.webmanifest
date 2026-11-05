@@ -1,10 +1,14 @@
 {
+  "id": "/",
   "name": "UzCheckers",
   "short_name": "UzCheckers",
   "description": "Play checkers (shashka) online",
+  "lang": "uz",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "categories": ["games"],
+  "prefer_related_applications": false,
   "background_color": "#262421",
   "theme_color": "#211f1c",
   "icons": [
